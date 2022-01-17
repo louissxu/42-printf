@@ -1,6 +1,7 @@
 #include "libft.h"
+#include "libftprintf.h"
 
-char	*ft_convert_x_upper(size_t num)
+char	*ft_convert_x_upper(int num)
 {
 	char	*result;
 	size_t	i;

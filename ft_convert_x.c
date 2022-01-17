@@ -1,4 +1,4 @@
-#include "ft_size_t_to_hex_str.c"
+#include "libftprintf.h"
 
 char	*ft_convert_x(int num)
 {
@@ -6,6 +6,6 @@ char	*ft_convert_x(int num)
 	char			*result;
 
 	u_num = (unsigned int)num;
-	result = ft_size_t_to_hex_str(u_num);
+	result = ft_size_t_to_str_hex(u_num);
 	return (result);
 }

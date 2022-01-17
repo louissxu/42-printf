@@ -1,11 +1,12 @@
 #include "libft.h"
+#include "libftprintf.h"
 
 char	*ft_convert_p(void *ptr)
 {
 	char	*result;
 	char	*ptr_str;
 
-	ptr_str = ft_size_t_to_hex_str((size_t)ptr);
+	ptr_str = ft_size_t_to_str_hex((size_t)ptr);
 	result = malloc(sizeof (*result) * (2 + ft_strlen(ptr_str) + 1));
 	if (!result)
 	{
