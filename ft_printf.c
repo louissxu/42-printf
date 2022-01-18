@@ -1,21 +1,48 @@
 #include "libft.h"
 #include "libftprintf.h"
 #include <stdarg.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
-	int		ap_i;
 	int		i;
+	char	*str;
 
 	va_start(ap, format);
-	ap_i = 0;
 	i = 0;
 	while (format[i])
 	{
-		write(1, &format[i], 1);
-		i++;
+		if (format[i] == '%' && format[i + 1])
+		{
+			if (format[i + 1] == 'c')
+				str = ft_convert_c(va_arg(ap, int));
+			else if (format[i + 1] == 's')
+				str = ft_convert_s(va_arg(ap, char *));
+			else if (format[i + 1] == 'p')
+				str = ft_convert_p(va_arg(ap, void *));
+			else if (format[i + 1] == 'd')
+				str = ft_convert_d(va_arg(ap, int));
+			else if (format[i + 1] == 'i')
+				str = ft_convert_i(va_arg(ap, int));
+			else if (format[i + 1] == 'u')
+				str = ft_convert_u(va_arg(ap, unsigned int));
+			else if (format[i + 1] == 'x')
+				str = ft_convert_x(va_arg(ap, int));
+			else if (format[i + 1] == 'X')
+				str = ft_convert_x_upper(va_arg(ap, int));
+			else if (format[i + 1] == '%')
+				str = ft_convert_percent();
+			write(1, str, ft_strlen(str));
+			free(str);
+			i += 2;
+		}
+		else
+		{
+			write(1, &format[i], 1);
+			i++;
+		}
 	}
 	return (0);
 }
-
