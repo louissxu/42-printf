@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_size_t_to_str_base.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lxu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/18 15:24:57 by lxu               #+#    #+#             */
+/*   Updated: 2022/01/18 15:25:00 by lxu              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "libft.h"
@@ -16,7 +28,7 @@ static size_t	priv_num_len(size_t num, size_t radix_size)
 		result++;
 		num = num / radix_size;
 	}
-	return result;
+	return (result);
 }
 
 char	*ft_size_t_to_str_base(size_t num, char *radix)
