@@ -6,11 +6,11 @@
 /*   By: lxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 15:23:51 by lxu               #+#    #+#             */
-/*   Updated: 2022/01/18 15:23:52 by lxu              ###   ########.fr       */
+/*   Updated: 2022/01/18 16:18:25 by lxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libftprintf.h"
 
 char	*ft_convert_s(char *str)
 {

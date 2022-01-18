@@ -6,12 +6,11 @@
 /*   By: lxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 15:25:08 by lxu               #+#    #+#             */
-/*   Updated: 2022/01/18 15:25:10 by lxu              ###   ########.fr       */
+/*   Updated: 2022/01/18 16:21:29 by lxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "libftprintf.h"
+#include "../includes/libftprintf.h"
 
 char	*ft_size_t_to_str_hex(size_t num)
 {

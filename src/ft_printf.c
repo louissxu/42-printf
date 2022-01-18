@@ -6,12 +6,11 @@
 /*   By: lxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 15:24:41 by lxu               #+#    #+#             */
-/*   Updated: 2022/01/18 15:24:42 by lxu              ###   ########.fr       */
+/*   Updated: 2022/01/18 16:18:16 by lxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "libftprintf.h"
+#include "../includes/libftprintf.h"
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdio.h>

@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_p.c                                     :+:      :+:    :+:   */
+/*   ft_convert_x_upper.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 15:23:07 by lxu               #+#    #+#             */
-/*   Updated: 2022/01/18 15:23:08 by lxu              ###   ########.fr       */
+/*   Created: 2022/01/18 15:24:30 by lxu               #+#    #+#             */
+/*   Updated: 2022/01/18 16:18:18 by lxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "libftprintf.h"
+#include "../includes/libftprintf.h"
 
-char	*ft_convert_p(void *ptr)
+char	*ft_convert_x_upper(int num)
 {
 	char	*result;
-	char	*ptr_str;
+	size_t	i;
 
-	ptr_str = ft_size_t_to_str_hex((size_t)ptr);
-	result = malloc(sizeof (*result) * (2 + ft_strlen(ptr_str) + 1));
-	if (!result)
+	result = ft_convert_x(num);
+	i = 0;
+	while (result[i])
 	{
-		return (NULL);
+		result[i] = ft_toupper(result[i]);
+		i++;
 	}
-	ft_strlcpy(result + 2, ptr_str, ft_strlen(ptr_str) + 1);
-	result[0] = '0';
-	result[1] = 'x';
 	return (result);
 }

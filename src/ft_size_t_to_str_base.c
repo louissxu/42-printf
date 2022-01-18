@@ -6,13 +6,13 @@
 /*   By: lxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 15:24:57 by lxu               #+#    #+#             */
-/*   Updated: 2022/01/18 15:25:00 by lxu              ###   ########.fr       */
+/*   Updated: 2022/01/18 16:21:39 by lxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "libft.h"
+#include "../includes/libftprintf.h"
 
 static size_t	priv_num_len(size_t num, size_t radix_size)
 {

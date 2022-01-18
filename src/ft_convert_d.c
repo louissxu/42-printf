@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_i.c                                     :+:      :+:    :+:   */
+/*   ft_convert_d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 15:22:56 by lxu               #+#    #+#             */
-/*   Updated: 2022/01/18 15:22:58 by lxu              ###   ########.fr       */
+/*   Created: 2022/01/18 15:21:29 by lxu               #+#    #+#             */
+/*   Updated: 2022/01/18 16:17:25 by lxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../includes/libftprintf.h"
 
-char	*ft_convert_i(int n)
+char	*ft_convert_d(int n)
 {
-	return (ft_convert_d(n));
+	char	*result;
+
+	result = ft_itoa(n);
+	if (!result)
+	{
+		return (NULL);
+	}
+	return (result);
 }
