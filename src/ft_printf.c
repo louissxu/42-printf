@@ -6,7 +6,7 @@
 /*   By: lxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 15:24:41 by lxu               #+#    #+#             */
-/*   Updated: 2022/01/18 16:18:16 by lxu              ###   ########.fr       */
+/*   Updated: 2022/01/18 20:09:41 by lxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int	ft_printf(const char *format, ...)
 	va_list	ap;
 	int		i;
 	char	*str;
+	int		bytes_printed;
 
+	bytes_printed = 0;
 	va_start(ap, format);
 	i = 0;
 	while (format[i])
@@ -45,15 +47,15 @@ int	ft_printf(const char *format, ...)
 				str = ft_convert_x_upper(va_arg(ap, int));
 			else if (format[i + 1] == '%')
 				str = ft_convert_percent();
-			write(1, str, ft_strlen(str));
+			bytes_printed += write(1, str, ft_strlen(str));
 			free(str);
 			i += 2;
 		}
 		else
 		{
-			write(1, &format[i], 1);
+			bytes_printed += write(1, &format[i], 1);
 			i++;
 		}
 	}
-	return (0);
+	return (bytes_printed);
 }
