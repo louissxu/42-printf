@@ -21,11 +21,19 @@ SRC_HELPERS = ft_size_t_to_str_base.c \
 
 SRC_PRINTF = ft_printf.c
 
-SRCS = $(SRC_CONVERT) \
-	   $(SRC_HELPERS) \
-	   $(SRC_PRINTF)
+SRC_DIR = src
 
-OBJS = $(SRCS:.c=.o)
+SRCS_RAW = $(SRC_CONVERT) \
+		   $(SRC_HELPERS) \
+		   $(SRC_PRINTF)
+
+SRCS = $(addprefix $(SRC_DIR)/, $(SRCS_RAW))
+
+OBJ_DIR = obj
+
+OBJS_RAW = $(SRCS_RAW:.c=.o)
+
+OBJS = $(patsubst %,$(OBJ_DIR)/%, $(OBJS_RAW))
 
 #-------------#
 #    RULES    #
@@ -33,15 +41,29 @@ OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME):
-	$(CC) $(CFLAGS) -I . -c $(SRCS)
-	ar rc $(NAME) $(OBJS)
+# REF: Meaning of $@ $< $^
+# https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean
+# REF: Making missing directory if needed
+# https://stackoverflow.com/questions/1950926/create-directories-using-make-file
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) -I . -c $< -o $@
+
+$(NAME): $(OBJS)
+	$(MAKE) bonus -C ./libft
+	cp libft/libft.a $(NAME)
+	ar -rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
 clean:
+	$(MAKE) clean -C ./libft
 	-rm $(OBJS)
+	-rmdir obj
 
-fclean: clean
+fclean:
+	$(MAKE) fclean -C ./libft
+	-rm $(OBJS)
+	-rmdir obj
 	-rm $(NAME)
 
 re: fclean all
