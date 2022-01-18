@@ -19,10 +19,6 @@ int main(void)
 	printf("testing p %p\n", b);
 	printf("testing my p %s\n", ft_convert_p(b));
 
-	int c = 123;
-	printf("testing d %d\n", c);
-	printf("testing i %i\n", c); 
-
 	int d = -567;
 	printf("testing u %u\n", d);
 	printf("testing my u %s\n", ft_convert_u(d));
@@ -30,6 +26,24 @@ int main(void)
 
 	printf("testing ft_size_to_str_base %s\n", ft_size_t_to_str_base(100, "0123456789abcdef"));
 
-	ft_printf("hello world");
+	ft_printf("hello world integer i is %d\n", 123);
+	printf("testing: <%5x>\n", 123);
+
+
+	printf("FULL TESTING ROUND\n");
+	char c = 'a';
+	printf("inbuilt %c\n", c);
+	ft_printf("my printf %c\n", c);
+
+	char *s = "this is a string";
+	printf("inbuilt %s\n", s);
+	ft_printf("my printf %s\n", s);
+
+	printf("inbuilt %p\n", s);
+	ft_printf("my printf %p\n", s);
+
+	int i = 123;
+	printf("inbuilt %d\n", i);
+	ft_printf("my printf %d\n", i);
 }
 
