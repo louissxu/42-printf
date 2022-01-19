@@ -42,5 +42,8 @@ int main(void)
 	ret = ft_printf(" %c %c %c ", '0', 0, '1');
 	printf(">\n");
 	printf("return value was %d\n", ret);
+
+	printf("%%%\n");
+	ft_printf("%%%\n");
 }
 
