@@ -6,7 +6,7 @@
 /*   By: lxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 15:24:41 by lxu               #+#    #+#             */
-/*   Updated: 2022/01/18 20:09:41 by lxu              ###   ########.fr       */
+/*   Updated: 2022/01/19 14:41:01 by lxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ int	ft_printf(const char *format, ...)
 				str = ft_convert_x_upper(va_arg(ap, int));
 			else if (format[i + 1] == '%')
 				str = ft_convert_percent();
-			bytes_printed += write(1, str, ft_strlen(str));
+			if (format[i + 1] == 'c')
+				bytes_printed += write(1, str, 1);
+			else
+				bytes_printed += write(1, str, ft_strlen(str));
 			free(str);
 			i += 2;
 		}
