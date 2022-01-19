@@ -31,5 +31,16 @@ int main(void)
 
 	printf("inbuilt   %%\n");
 	ft_printf("my printf %%\n");	
+
+	printf("MATCHING TESTS\n");
+	int ret;
+	printf("testing inbuilt: <");
+	ret = printf(" %c %c %c ", '0', 0, '1');
+	printf(">\n");
+	printf("return value was %d\n", ret);
+	printf("testing ft     : <");
+	ret = ft_printf(" %c %c %c ", '0', 0, '1');
+	printf(">\n");
+	printf("return value was %d\n", ret);
 }
 
