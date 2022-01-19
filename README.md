@@ -15,7 +15,11 @@ A partial reimplementation of the printf in C. Handles only the following conver
 
 See the subject.pdf for further details.
 
-Branch description
+### Dependency
+
+Requires the libft library to run. The full libft should be placed in the subdirectory `libft/`. This includes src folder, Makefile, etc. Libft will be compiled through recursive invocation of make.
+
+### Branch description
 
 | Branch | Description                                                                          |
 |--------|--------------------------------------------------------------------------------------|
