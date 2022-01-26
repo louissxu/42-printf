@@ -31,4 +31,24 @@ char	*ft_convert_u(int num);
 char	*ft_convert_x(int num);
 char	*ft_convert_x_upper(int num);
 
+typedef enum e_flags
+{
+	zero_padding = 1,
+	negative_field_width = 2,
+	alternate_form = 4,
+	prepend_negative_or_space = 8,
+	prepend_sign = 16,
+} t_flags;
+
+typedef	struct	s_element
+{
+	void			*input_arg;
+	t_flags		flags;
+	char			conversion_type;
+	int				precision;
+	int				minimum_field_width;
+	char			*content_string;
+	t_element	*next;
+}	t_element;
+
 #endif
