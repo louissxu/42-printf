@@ -42,13 +42,12 @@ typedef enum e_flags
 
 typedef	struct	s_element
 {
-	void			*input_arg;
-	t_flags		flags;
-	char			conversion_type;
-	int				precision;
-	int				minimum_field_width;
-	char			*content_string;
-	t_element	*next;
+	void		*input_arg;
+	t_flags	flags;
+	char		conversion_type;
+	int			precision;
+	int			minimum_field_width;
+	char		*content_string;
 }	t_element;
 
 #endif
