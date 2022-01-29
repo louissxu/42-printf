@@ -14,6 +14,7 @@
 # define LIBFTPRINTF_H
 
 # include <stddef.h>
+# include <stdarg.h>
 # include "../libft/libft.h"
 
 int		ft_printf(const char *format, ...);
@@ -30,6 +31,9 @@ char	*ft_convert_s(char *str);
 char	*ft_convert_u(int num);
 char	*ft_convert_x(int num);
 char	*ft_convert_x_upper(int num);
+
+t_list	*ft_parser(const char *format, va_list arg_list);
+int			ft_printer(t_list *list);
 
 typedef enum e_flags
 {
