@@ -14,7 +14,7 @@ int priv_ft_parse_char(char c, t_element **element)
 	// 	(*element)->flags = (*element)->flags | prepend_negative_or_space;
 	// else if (c == '+')
 	// 	(*element)->flags = (*element)->flags | prepend_sign;
-	(*element)->content_string = ft_strdup(c);
+	(*element)->content_string = ft_strdup(&c);
 	return (0);
 }
 
@@ -22,6 +22,7 @@ t_element *priv_ft_parse_first(const char *format, size_t *format_i, va_list arg
 {
 	t_element	*element;
 
+	va_arg(arg_list, int);
 	element = malloc(sizeof (*element) * 1);
 	if (format[*format_i])
 	{
@@ -36,7 +37,7 @@ t_list	*ft_parser(const char *format, va_list arg_list)
 	t_list	*head;
 	t_list	*current;
 	size_t	i;
-	t_element	*element;
+	//t_element	*element;
 
 	head = NULL;
 	i = 0;

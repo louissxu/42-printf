@@ -19,12 +19,18 @@ SRC_CONVERT = ft_convert_c.c \
 SRC_HELPERS = ft_size_t_to_str_base.c \
 			  ft_size_t_to_str_hex.c
 
+SRC_PARSER = ft_parser.c
+
+SRC_PRINTER = ft_printer.c
+
 SRC_PRINTF = ft_printf.c
 
 SRC_DIR = src
 
 SRCS_RAW = $(SRC_CONVERT) \
 		   $(SRC_HELPERS) \
+			 $(SRC_PARSER) \
+			 $(SRC_PRINTER) \
 		   $(SRC_PRINTF)
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRCS_RAW))
