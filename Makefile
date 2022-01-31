@@ -56,7 +56,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -I . -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(MAKE) bonus -C ./libft
+	$(MAKE) extra -C ./libft
 	cp libft/libft.a $(NAME)
 	ar -rc $(NAME) $(OBJS)
 	ranlib $(NAME)

@@ -49,6 +49,7 @@ typedef	struct	s_element
 	void		*input_arg;
 	t_flags	flags;
 	char		conversion_type;
+	char		is_conversion;
 	int			precision;
 	int			minimum_field_width;
 	char		*content_string;

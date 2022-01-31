@@ -3,7 +3,7 @@
 
 int main(void)
 {
-	ft_printf("testhello", 1, 2, 3, 4, 5, 6);
+	ft_printf("test%hello%world%stuff", 1, 2, 3, 4, 5, 6);
 
 	// printf("FULL TESTING ROUND\n");
 	// char c = 'a';
