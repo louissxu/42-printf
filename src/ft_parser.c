@@ -42,15 +42,35 @@ t_element	*priv_ft_create_empty_element()
 void	priv_ft_parse_char(const char *format, size_t *format_i, t_element **element)
 {
 	if (format[*format_i] == '0')
+	{
 		(*element)->flags = (*element)->flags | zero_padding;
+		(*format_i)++;
+	}	
 	else if (format[*format_i] == '-')
+	{
 		(*element)->flags = (*element)->flags | negative_field_width;
+		(*format_i)++;
+	}
 	else if (format[*format_i] == '#')
+	{
 		(*element)->flags = (*element)->flags | alternate_form;
+		(*format_i)++;
+	}	
 	else if (format[*format_i] == ' ')
+	{
 		(*element)->flags = (*element)->flags | prepend_negative_or_space;
+		(*format_i)++;
+	}	
 	else if (format[*format_i] == '+')
+	{
 		(*element)->flags = (*element)->flags | prepend_sign;
+		(*format_i)++;
+	}
+	else if (format[*format_i] == '.')
+	{
+		(*element)->precision = ft_atoi(&format[*format_i]);
+		
+	}
 	return ;
 }
 

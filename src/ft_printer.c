@@ -3,7 +3,7 @@
 
 void ft_print_element(void *element)
 {
-	ft_putstr_fd(((t_element*)element)->content_string, 1);
+	ft_putstr_fd(((t_element*)element)->content_string, 1)
 	ft_putstr_fd("\n", 1);
 }
 
