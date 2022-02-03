@@ -15,59 +15,37 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+//rename priv to static
+//remove is_conversion flag (not used)
+//when precision set to .0 dont print zero padding if minimum field width. ie check out %020.0p
+
 int	ft_printf(const char *format, ...)
 {
-	va_list	ap;
-	t_list	*head;
+	va_list		ap;
+	size_t		i;
+	t_element	*element;
+	size_t		bytes_printed;
 
 	va_start(ap, format);
-	head = ft_parser(format, ap);
-	ft_printer(head);
-	return (0);
+	i = 0;
+	bytes_printed = 0;
+
+	while (format[i])
+	{
+		if (format[i] == '%')
+		{
+			element = ft_parser(format, &i, ap);
+			if (element)
+			{
+				bytes_printed += ft_print_element(element);
+				ft_destroy_element(element);
+			}
+		}
+		else
+		{
+			bytes_printed += write(1, &format[i], 1);
+			i++;
+		}
+	}
+	return (bytes_printed);
 }
-
-	// va_list	ap;
-	// int		i;
-	// char	*str;
-	// int		bytes_printed;
-
-	// bytes_printed = 0;
-	// va_start(ap, format);
-	// i = 0;
-	// while (format[i])
-	// {
-	// 	if (format[i] == '%' && format[i + 1])
-	// 	{
-	// 		if (format[i + 1] == 'c')
-	// 			str = ft_convert_c(va_arg(ap, int));
-	// 		else if (format[i + 1] == 's')
-	// 			str = ft_convert_s(va_arg(ap, char *));
-	// 		else if (format[i + 1] == 'p')
-	// 			str = ft_convert_p(va_arg(ap, void *));
-	// 		else if (format[i + 1] == 'd')
-	// 			str = ft_convert_d(va_arg(ap, int));
-	// 		else if (format[i + 1] == 'i')
-	// 			str = ft_convert_i(va_arg(ap, int));
-	// 		else if (format[i + 1] == 'u')
-	// 			str = ft_convert_u(va_arg(ap, unsigned int));
-	// 		else if (format[i + 1] == 'x')
-	// 			str = ft_convert_x(va_arg(ap, int));
-	// 		else if (format[i + 1] == 'X')
-	// 			str = ft_convert_x_upper(va_arg(ap, int));
-	// 		else if (format[i + 1] == '%')
-	// 			str = ft_convert_percent();
-	// 		if (format[i + 1] == 'c')
-	// 			bytes_printed += write(1, str, 1);
-	// 		else
-	// 			bytes_printed += write(1, str, ft_strlen(str));
-	// 		free(str);
-	// 		i += 2;
-	// 	}
-	// 	else
-	// 	{
-	// 		bytes_printed += write(1, &format[i], 1);
-	// 		i++;
-	// 	}
-	// }
-	// return (bytes_printed);
-// }

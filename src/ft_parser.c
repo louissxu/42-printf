@@ -2,24 +2,6 @@
 #include "../libft/libft.h"
 #include <stdarg.h>
 
-t_element *priv_ft_parse_first(const char *format, size_t *format_i, va_list arg_list)
-{
-	t_element	*element;
-
-	va_arg(arg_list, int);
-	element = malloc(sizeof (*element) * 1);
-	if (!element)
-	{
-		return (NULL);
-	}
-	if (format[*format_i])
-	{
-		priv_ft_parse_char(format[*format_i], &element);
-		(*format_i)++;
-	}
-	return (element);
-}
-
 t_element	*priv_ft_create_empty_element()
 {
 	t_element	*element;
@@ -29,134 +11,130 @@ t_element	*priv_ft_create_empty_element()
 	{
 		return (NULL);
 	}
-	element->input_arg = NULL;
 	element->flags = 0;
 	element->conversion_type = '\0';
-	element->is_conversion = '\0';
 	element->precision = 0;
 	element->minimum_field_width = 0;
 	element->content_string = NULL;
 	return(element);
 }
 
-void	priv_ft_parse_char(const char *format, size_t *format_i, t_element **element)
+int	priv_ft_parse_flag(const char *format, size_t *format_i, t_element *element)
 {
 	if (format[*format_i] == '0')
-	{
-		(*element)->flags = (*element)->flags | zero_padding;
-		(*format_i)++;
-	}	
+		element->flags = element->flags | zero_padding;
 	else if (format[*format_i] == '-')
-	{
-		(*element)->flags = (*element)->flags | negative_field_width;
-		(*format_i)++;
-	}
+		element->flags = element->flags | negative_field_width;
 	else if (format[*format_i] == '#')
-	{
-		(*element)->flags = (*element)->flags | alternate_form;
-		(*format_i)++;
-	}	
+		element->flags = element->flags | alternate_form;
 	else if (format[*format_i] == ' ')
-	{
-		(*element)->flags = (*element)->flags | prepend_negative_or_space;
-		(*format_i)++;
-	}	
+		element->flags = element->flags | prepend_negative_or_space;
 	else if (format[*format_i] == '+')
+		element->flags = element->flags | prepend_sign;
+	else
+		return (1);
+	(*format_i)++;
+	return (0);
+}
+
+int	priv_ft_parse_minimum_field_width(const char *format, size_t *format_i, t_element *element)
+{
+	element->minimum_field_width = 0;
+	while(ft_isdigit(format[*format_i]))
 	{
-		(*element)->flags = (*element)->flags | prepend_sign;
+		element->minimum_field_width *= 10;
+		element->minimum_field_width += format[*format_i];
+		element->minimum_field_width -= '0';
 		(*format_i)++;
 	}
-	else if (format[*format_i] == '.')
+	return (0);
+}
+
+int	priv_ft_parse_precision(const char *format, size_t *format_i, t_element *element)
+{
+	if (format[*format_i] != '.')
+		return (1);
+	(*format_i)++;
+	element->flags = element->flags | precision_is_set;
+	element->precision = 0;
+	while(ft_isdigit(format[*format_i]))
 	{
-		(*element)->precision = ft_atoi(&format[*format_i]);
-		
+		element->precision *= 10;
+		element->precision += format[*format_i];
+		element->precision -= '0';
+		(*format_i)++;
 	}
-	return ;
+	return (0);
+}
+
+int priv_ft_parse_conversion_type(const char *format, size_t *format_i, t_element *element, va_list arg_list)
+{
+	if (!ft_isinstr(format[*format_i], "cspdiuxX%"))
+		return (1);
+	element->conversion_type = format[*format_i];
+	if (format[*format_i] == 'c')
+		element->content_string = ft_convert_c(va_arg(arg_list, int));
+	else if (format[*format_i] == 'd')
+		element->content_string = ft_convert_d(va_arg(arg_list, int));
+	else if (format[*format_i] == 'i')
+		element->content_string = ft_convert_i(va_arg(arg_list, int));
+	else if (format[*format_i] == 'p')
+		element->content_string = ft_convert_p(va_arg(arg_list, void *));
+	else if (format[*format_i] == '%')
+		element->content_string = ft_convert_percent();
+	else if (format[*format_i] == 's')
+		element->content_string = ft_convert_s(va_arg(arg_list, char *));
+	else if (format[*format_i] == 'u')
+		element->content_string = ft_convert_u(va_arg(arg_list, unsigned int));
+	else if (format[*format_i] == 'x')
+		element->content_string = ft_convert_x(va_arg(arg_list, int));
+	else if (format[*format_i] == 'X')
+		element->content_string = ft_convert_x_upper(va_arg(arg_list, int));
+	else
+		return (1);
+	(*format_i)++;
+	return (0);
 }
 
 t_element	*priv_ft_parse_conversion(const char *format, size_t *format_i, va_list arg_list)
 {
 	t_element	*element;
+	int			error;
 
-	va_arg(arg_list, int);
-	element = priv_ft_create_empty_element;
+	if (format[*format_i] != '%')
+		return (NULL);
+	(*format_i)++;
+	element = priv_ft_create_empty_element();
 	if (!element)
 	{
 		return (NULL);
 	}
-	while(!ft_isinstr(format[*format_i], "cspdiuxX%"))
+	error = 0;
+	while(ft_isinstr(format[*format_i], "cspdiuxX%0-# +123456789.") && error == 0)
 	{
-		if 
-	}
-
-	size_t end_i = *format_i;
-	(*format_i)--;
-	while(format[end_i] && format[end_i] != '%')
-	{
-		end_i++;
-	}
-	element->content_string = malloc(sizeof (*(element->content_string)) * (end_i - *format_i + 1));
-	ft_memcpy(element->content_string, &(format[*format_i]), end_i - *format_i + 1);
-	(element->content_string)[end_i - *format_i] = '\0';
-	*format_i = end_i;
-	return (element);
-}
-
-t_element *priv_ft_parse_plain(const char *format, size_t *format_i)
-{
-	t_element	*element;
-	size_t		str_start;
-	size_t		str_end;
-	char			*str_copy;
-
-	str_start = *format_i;
-	str_end = str_start;
-	while (format[str_end]!= '\0' && format[str_end] != '%')
-	{
-		str_end++;
-	}
-	element = malloc(sizeof (*element) * 1);
-	str_copy = malloc(sizeof (*str_copy) * (str_end - str_start + 1));
-	if (!element || !str_copy)
-	{
-		if (element)
-			free(element);
-		if (str_copy)
-			free(str_copy);
-		return (NULL);
-	}
-	ft_memcpy(str_copy, &(format[str_start]), str_end - str_start + 1);
-	str_copy[str_end - str_start] = '\0';
-	element->content_string = str_copy;
-	element->is_conversion = 0;
-	*format_i = str_end;
-	return (element);
-}
-
-t_list	*ft_parser(const char *format, va_list arg_list)
-{
-	t_list	*head;
-	t_list	*current;
-	size_t	i;
-	t_element	*element;
-
-	head = NULL;
-	i = 0;
-	va_arg(arg_list, int);
-	while (format[i])
-	{
-		if (format[i] == '%')
+		if (ft_isinstr(format[*format_i], "cspdiuxX%"))
 		{
-			i++;
-			element = priv_ft_parse_conversion(format, &i, arg_list);
+			error = priv_ft_parse_conversion_type(format, format_i, element, arg_list);
+			if (!error)
+				return (element);
 		}
+		else if (ft_isinstr(format[*format_i], "0-# +"))
+			error = priv_ft_parse_flag(format, format_i, element);
+		else if (ft_isinstr(format[*format_i], "123456789"))
+			error = priv_ft_parse_minimum_field_width(format, format_i, element);
+		else if (ft_isinstr(format[*format_i], "."))
+			error = priv_ft_parse_precision(format, format_i, element);
 		else
-		{
-			element = priv_ft_parse_plain(format, &i);
-		}
-		//TODO: if not element, destroy, return.
-		current = ft_lstnew(element);
-		ft_lstadd_back(&head, current);
+			error = 1;
 	}
-	return (head);
+	free(element);
+	return (NULL);
+}
+
+t_element	*ft_parser(const char *format, size_t *i, va_list arg_list)
+{
+	t_element	*element;
+
+	element = priv_ft_parse_conversion(format, i, arg_list);
+	return (element);
 }

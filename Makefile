@@ -21,7 +21,17 @@ SRC_HELPERS = ft_size_t_to_str_base.c \
 
 SRC_PARSER = ft_parser.c
 
-SRC_PRINTER = ft_printer.c
+SRC_PRINTER = ft_print_element.c \
+			  ft_destroy_element.c \
+			  ft_print_element_c.c \
+			  ft_print_element_d.c \
+			  ft_print_element_i.c \
+			  ft_print_element_p.c \
+			  ft_print_element_percent.c \
+			  ft_print_element_s.c \
+			  ft_print_element_u.c \
+			  ft_print_element_x.c \
+			  ft_print_element_x_upper.c
 
 SRC_PRINTF = ft_printf.c
 

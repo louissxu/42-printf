@@ -32,9 +32,6 @@ char	*ft_convert_u(int num);
 char	*ft_convert_x(int num);
 char	*ft_convert_x_upper(int num);
 
-t_list	*ft_parser(const char *format, va_list arg_list);
-int			ft_printer(t_list *list);
-
 typedef enum e_flags
 {
 	zero_padding = 1,
@@ -42,17 +39,30 @@ typedef enum e_flags
 	alternate_form = 4,
 	prepend_negative_or_space = 8,
 	prepend_sign = 16,
+	precision_is_set = 32,
 } t_flags;
 
 typedef	struct	s_element
 {
-	void		*input_arg;
 	t_flags	flags;
 	char		conversion_type;
-	char		is_conversion;
-	int			precision;
-	int			minimum_field_width;
+	size_t		precision;
+	size_t		minimum_field_width;
 	char		*content_string;
 }	t_element;
+
+t_element	*ft_parser(const char *format, size_t *i, va_list arg_list);
+size_t	ft_print_element(t_element *element);
+void	ft_destroy_element(t_element *element);
+
+size_t	ft_print_element_c(t_element *element);
+size_t	ft_print_element_d(t_element *element);
+size_t	ft_print_element_i(t_element *element);
+size_t	ft_print_element_p(t_element *element);
+size_t	ft_print_element_percent(t_element *element);
+size_t	ft_print_element_s(t_element *element);
+size_t	ft_print_element_u(t_element *element);
+size_t	ft_print_element_x(t_element *element);
+size_t	ft_print_element_x_upper(t_element *element);
 
 #endif
