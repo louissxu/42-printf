@@ -51,6 +51,15 @@ typedef	struct	s_element
 	char		*content_string;
 }	t_element;
 
+typedef struct	s_output_string
+{
+	char	*left_padding;
+	char	*prefix;
+	char	*leading_zeros;
+	char	*value;
+	char	*right_padding;
+}	t_output_string;
+
 t_element	*ft_parser(const char *format, size_t *i, va_list arg_list);
 size_t	ft_print_element(t_element *element);
 void	ft_destroy_element(t_element *element);
@@ -64,5 +73,13 @@ size_t	ft_print_element_s(t_element *element);
 size_t	ft_print_element_u(t_element *element);
 size_t	ft_print_element_x(t_element *element);
 size_t	ft_print_element_x_upper(t_element *element);
+
+t_output_string	*ft_create_empty_output_string();
+void	ft_destroy_output_string(t_output_string *os);
+size_t	ft_output_string_len(t_output_string *os);
+size_t	ft_print_output_string(t_output_string *os);
+t_output_string	*ft_convert_element_to_output_string(t_element *element);
+t_output_string *ft_convert_element_x_to_output_string(t_element *element);
+t_output_string *ft_convert_element_x_upper_to_output_string(t_element *element);
 
 #endif

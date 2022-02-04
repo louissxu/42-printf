@@ -33,14 +33,23 @@ SRC_PRINTER = ft_print_element.c \
 			  ft_print_element_x.c \
 			  ft_print_element_x_upper.c
 
+SRC_OUTPUT_STRING = ft_create_empty_output_string.c \
+					ft_destroy_output_string.c \
+					ft_output_string_len.c \
+					ft_print_output_string.c \
+					ft_convert_element_to_output_string.c \
+					ft_convert_element_x_to_output_string.c \
+					ft_convert_element_x_upper_to_output_string.c
+
 SRC_PRINTF = ft_printf.c
 
 SRC_DIR = src
 
 SRCS_RAW = $(SRC_CONVERT) \
 		   $(SRC_HELPERS) \
-			 $(SRC_PARSER) \
-			 $(SRC_PRINTER) \
+		   $(SRC_PARSER) \
+		   $(SRC_PRINTER) \
+		   $(SRC_OUTPUT_STRING) \
 		   $(SRC_PRINTF)
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRCS_RAW))

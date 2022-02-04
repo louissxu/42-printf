@@ -4,12 +4,12 @@
 int main(void)
 {
 	//int a = 5;
-	size_t inbuilt_return = printf("hello world %10s |%+010.0i| |%-05c| %i %X |%020.0p| |%-05%|\n", "hello", 556, 'j', 56, 12345, &"stuff");
-	size_t my_return =   ft_printf("hello world %10s |%+010.0i| |%-05c| %i %X |%020.0p| |%-05%|\n", "hello", 556, 'j', 56, 12345, &"stuff");
+	size_t inbuilt_return = printf("hello world |%10.3s| |%+010.0i| |%-05c| %i |%#X| |%020p| |%-05%|\n", "hello", 556, 'j', 56, 12345, &"stuff");
+	size_t my_return =   ft_printf("hello world |%10.3s| |%+010.0i| |%-05c| %i |%#X| |%020p| |%-05%|\n", "hello", 556, 'j', 56, 12345, &"stuff");
 	printf("inbuilt return: %zu    my return: %zu\n", inbuilt_return, my_return);
 
-	inbuilt_return = printf("hello world |%.3u|\n", 0);
-	my_return =   ft_printf("hello world |%.3u|\n", 0);
+	inbuilt_return = printf("hello world |%#X|\n", 0);
+	my_return =   ft_printf("hello world |%#X|\n", 0);
 	printf("inbuilt return: %zu    my return: %zu\n", inbuilt_return, my_return);
 
 

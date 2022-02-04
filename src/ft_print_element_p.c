@@ -14,7 +14,7 @@ size_t ft_print_element_p(t_element *element)
     chars_printed = 0;
     while (chars_printed + chars_to_print < element->minimum_field_width && \
     !(element->flags & negative_field_width) && \
-    !(element->flags & zero_padding && element->precision == 0))
+    !(element->flags & zero_padding && !(element->flags & precision_is_set)))
     {
         ft_putchar_fd(' ', 1);
         chars_printed++;
