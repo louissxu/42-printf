@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-size_t ft_print_element(t_element *element)
+size_t ft_element_print(t_element *element)
 {
 	// printf("\n----printing conversion----\n");
 	// printf("flags:               %d\n", element->flags);

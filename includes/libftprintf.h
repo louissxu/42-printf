@@ -61,8 +61,9 @@ typedef struct s_output_string
 } t_output_string;
 
 t_element *ft_parser(const char *format, size_t *i, va_list arg_list);
-size_t ft_print_element(t_element *element);
-void ft_destroy_element(t_element *element);
+t_element *ft_element_create_empty();
+void ft_element_destroy(t_element *element);
+size_t ft_element_print(t_element *element);
 
 size_t ft_print_element_c(t_element *element);
 size_t ft_print_element_d(t_element *element);

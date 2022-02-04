@@ -2,24 +2,7 @@
 #include "../libft/libft.h"
 #include <stdarg.h>
 
-t_element	*priv_ft_create_empty_element()
-{
-	t_element	*element;
-	
-	element = malloc(sizeof (*element) * 1);
-	if (!element)
-	{
-		return (NULL);
-	}
-	element->flags = 0;
-	element->conversion_type = '\0';
-	element->precision = 0;
-	element->minimum_field_width = 0;
-	element->content_string = NULL;
-	return(element);
-}
-
-int	priv_ft_parse_flag(const char *format, size_t *format_i, t_element *element)
+int priv_ft_parse_flag(const char *format, size_t *format_i, t_element *element)
 {
 	if (format[*format_i] == '0')
 		element->flags = element->flags | zero_padding;
@@ -37,10 +20,10 @@ int	priv_ft_parse_flag(const char *format, size_t *format_i, t_element *element)
 	return (0);
 }
 
-int	priv_ft_parse_minimum_field_width(const char *format, size_t *format_i, t_element *element)
+int priv_ft_parse_minimum_field_width(const char *format, size_t *format_i, t_element *element)
 {
 	element->minimum_field_width = 0;
-	while(ft_isdigit(format[*format_i]))
+	while (ft_isdigit(format[*format_i]))
 	{
 		element->minimum_field_width *= 10;
 		element->minimum_field_width += format[*format_i];
@@ -50,14 +33,14 @@ int	priv_ft_parse_minimum_field_width(const char *format, size_t *format_i, t_el
 	return (0);
 }
 
-int	priv_ft_parse_precision(const char *format, size_t *format_i, t_element *element)
+int priv_ft_parse_precision(const char *format, size_t *format_i, t_element *element)
 {
 	if (format[*format_i] != '.')
 		return (1);
 	(*format_i)++;
 	element->flags = element->flags | precision_is_set;
 	element->precision = 0;
-	while(ft_isdigit(format[*format_i]))
+	while (ft_isdigit(format[*format_i]))
 	{
 		element->precision *= 10;
 		element->precision += format[*format_i];
@@ -96,21 +79,21 @@ int priv_ft_parse_conversion_type(const char *format, size_t *format_i, t_elemen
 	return (0);
 }
 
-t_element	*priv_ft_parse_conversion(const char *format, size_t *format_i, va_list arg_list)
+t_element *priv_ft_parse_conversion(const char *format, size_t *format_i, va_list arg_list)
 {
-	t_element	*element;
-	int			error;
+	t_element *element;
+	int error;
 
 	if (format[*format_i] != '%')
 		return (NULL);
 	(*format_i)++;
-	element = priv_ft_create_empty_element();
+	element = ft_element_create_empty();
 	if (!element)
 	{
 		return (NULL);
 	}
 	error = 0;
-	while(ft_isinstr(format[*format_i], "cspdiuxX%0-# +123456789.") && error == 0)
+	while (ft_isinstr(format[*format_i], "cspdiuxX%0-# +123456789.") && error == 0)
 	{
 		if (ft_isinstr(format[*format_i], "cspdiuxX%"))
 		{
@@ -131,9 +114,9 @@ t_element	*priv_ft_parse_conversion(const char *format, size_t *format_i, va_lis
 	return (NULL);
 }
 
-t_element	*ft_parser(const char *format, size_t *i, va_list arg_list)
+t_element *ft_parser(const char *format, size_t *i, va_list arg_list)
 {
-	t_element	*element;
+	t_element *element;
 
 	element = priv_ft_parse_conversion(format, i, arg_list);
 	return (element);

@@ -19,10 +19,11 @@ SRC_CONVERT = ft_convert_c.c \
 SRC_HELPERS = ft_size_t_to_str_base.c \
 			  ft_size_t_to_str_hex.c
 
-SRC_PARSER = ft_parser.c
+SRC_PARSER = ft_parser.c \
+			 ft_element_create_empty.c
 
-SRC_PRINTER = ft_print_element.c \
-			  ft_destroy_element.c \
+SRC_PRINTER = ft_element_print.c \
+			  ft_element_destroy.c \
 			  ft_print_element_c.c \
 			  ft_print_element_d.c \
 			  ft_print_element_i.c \
