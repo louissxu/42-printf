@@ -6,10 +6,10 @@ size_t ft_print_element_p(t_element *element)
     size_t  chars_printed;
     size_t  i;
 
-    if (element->precision > ft_strlen(element->content_string) - 2)
+    if (element->precision > ft_strlen(element->content_string))
         chars_to_print = element->precision + 2;
     else
-        chars_to_print = ft_strlen(element->content_string);
+        chars_to_print = ft_strlen(element->content_string) + 2;
 
     chars_printed = 0;
     while (chars_printed + chars_to_print < element->minimum_field_width && \
