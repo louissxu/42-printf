@@ -33,15 +33,15 @@ size_t ft_print_element_p(t_element *element)
     }
 
     i = 0;
-    while (i + ft_strlen(element->content_string) - 2 < element->precision)
+    while (i + ft_strlen(element->content_string) < element->precision)
     {
         ft_putchar_fd('0', 1);
         i++;
         chars_printed++;
     }
 
-    ft_putstr_fd((element->content_string) + 2, 1);
-    chars_printed += ft_strlen((element->content_string) + 2);
+    ft_putstr_fd(element->content_string, 1);
+    chars_printed += ft_strlen(element->content_string);
 
     while (chars_printed < element->minimum_field_width)
     {
