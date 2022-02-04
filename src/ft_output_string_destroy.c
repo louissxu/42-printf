@@ -1,6 +1,6 @@
 #include "../includes/libftprintf.h"
 
-void    ft_destroy_output_string(t_output_string *output_string)
+void ft_output_string_destroy(t_output_string *output_string)
 {
     if (output_string->left_padding)
         free(output_string->left_padding);

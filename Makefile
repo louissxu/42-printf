@@ -33,10 +33,10 @@ SRC_PRINTER = ft_print_element.c \
 			  ft_print_element_x.c \
 			  ft_print_element_x_upper.c
 
-SRC_OUTPUT_STRING = ft_create_empty_output_string.c \
-					ft_destroy_output_string.c \
+SRC_OUTPUT_STRING = ft_output_string_create_empty.c \
+					ft_output_string_destroy.c \
 					ft_output_string_len.c \
-					ft_print_output_string.c \
+					ft_output_string_print.c \
 					ft_convert_element_to_output_string.c \
 					ft_convert_element_x_to_output_string.c \
 					ft_convert_element_x_upper_to_output_string.c

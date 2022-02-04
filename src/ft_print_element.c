@@ -13,7 +13,7 @@ size_t ft_print_element(t_element *element)
 	// printf("content_string:     <%s>\n", element->content_string);
 	// printf("----end of this element----\n");
 
-	t_output_string	*output_string;
+	t_output_string *output_string;
 	size_t bytes_printed;
 
 	if (element->conversion_type == 'c')
@@ -33,15 +33,15 @@ size_t ft_print_element(t_element *element)
 	else if (element->conversion_type == 'x')
 	{
 		output_string = ft_convert_element_to_output_string(element);
-		bytes_printed = ft_print_output_string(output_string);
-		ft_destroy_output_string(output_string);
+		bytes_printed = ft_output_string_print(output_string);
+		ft_output_string_destroy(output_string);
 		return (bytes_printed);
 	}
 	else if (element->conversion_type == 'X')
 	{
 		output_string = ft_convert_element_to_output_string(element);
-		bytes_printed = ft_print_output_string(output_string);
-		ft_destroy_output_string(output_string);
+		bytes_printed = ft_output_string_print(output_string);
+		ft_output_string_destroy(output_string);
 		return (bytes_printed);
 	}
 	else

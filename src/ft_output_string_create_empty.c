@@ -1,10 +1,10 @@
 #include "../includes/libftprintf.h"
 
-t_output_string  *ft_create_empty_output_string()
+t_output_string *ft_output_string_create_empty()
 {
     t_output_string *output_string;
 
-    output_string = malloc(sizeof (*output_string) * 1);
+    output_string = malloc(sizeof(*output_string) * 1);
     if (!output_string)
     {
         return (NULL);

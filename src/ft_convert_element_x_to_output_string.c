@@ -3,10 +3,10 @@
 t_output_string *ft_convert_element_x_to_output_string(t_element *element)
 {
     t_output_string *os;
-    size_t          len;
-    char            *padding_string;
+    size_t len;
+    char *padding_string;
 
-    os = ft_create_empty_output_string();
+    os = ft_output_string_create_empty();
     if (!os)
         return (NULL);
 
@@ -15,18 +15,18 @@ t_output_string *ft_convert_element_x_to_output_string(t_element *element)
     else
         os->value = ft_strdup(element->content_string);
     if (!(os->value))
-    {  
-        ft_destroy_output_string(os);
+    {
+        ft_output_string_destroy(os);
         return (NULL);
     }
 
     if (ft_strlen(os->value) < element->precision)
     {
         len = element->precision - ft_strlen(os->value);
-        os->leading_zeros = malloc(sizeof (*(os->leading_zeros)) * (len + 1));
+        os->leading_zeros = malloc(sizeof(*(os->leading_zeros)) * (len + 1));
         if (!(os->leading_zeros))
         {
-            ft_destroy_output_string(os);
+            ft_output_string_destroy(os);
             return (NULL);
         }
         ft_memset(os->leading_zeros, '0', len);
@@ -38,7 +38,7 @@ t_output_string *ft_convert_element_x_to_output_string(t_element *element)
         os->prefix = ft_strdup("0x");
         if (!(os->prefix))
         {
-            ft_destroy_output_string(os);
+            ft_output_string_destroy(os);
             return (NULL);
         }
     }
@@ -46,10 +46,10 @@ t_output_string *ft_convert_element_x_to_output_string(t_element *element)
     if (ft_output_string_len(os) < element->minimum_field_width)
     {
         len = element->minimum_field_width - ft_output_string_len(os);
-        padding_string = malloc(sizeof (*padding_string) * (len + 1));
+        padding_string = malloc(sizeof(*padding_string) * (len + 1));
         if (!padding_string)
         {
-            ft_destroy_output_string(os);
+            ft_output_string_destroy(os);
             return (NULL);
         }
         if (element->flags & negative_field_width)

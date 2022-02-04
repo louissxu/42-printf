@@ -2,9 +2,9 @@
 
 #include <stdio.h>
 
-size_t  ft_print_output_string(t_output_string *output_string)
+size_t ft_output_string_print(t_output_string *output_string)
 {
-    size_t  bytes_printed;
+    size_t bytes_printed;
 
     // printf("\n\n----------DEBUGGING PRINT----------\n");
     // printf("left padding:  %s\n", output_string->left_padding);
