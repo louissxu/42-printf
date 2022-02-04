@@ -66,6 +66,8 @@ OBJS = $(patsubst %,$(OBJ_DIR)/%, $(OBJS_RAW))
 
 all: $(NAME)
 
+bonus: all
+
 # REF: Meaning of $@ $< $^
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean
 # REF: Making missing directory if needed
@@ -93,4 +95,4 @@ fclean:
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re
