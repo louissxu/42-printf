@@ -13,6 +13,7 @@ t_output_string *ft_output_string_create_empty()
     output_string->prefix = NULL;
     output_string->leading_zeros = NULL;
     output_string->value = NULL;
+    output_string->value_override_bytes_to_print = 0;
     output_string->right_padding = NULL;
     return (output_string);
 }

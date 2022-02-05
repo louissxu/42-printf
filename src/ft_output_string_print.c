@@ -4,7 +4,8 @@
 
 size_t ft_output_string_print(t_output_string *output_string)
 {
-    size_t bytes_printed;
+    size_t  bytes_printed;
+    size_t  i;
 
     // printf("\n\n----------DEBUGGING PRINT----------\n");
     // printf("left padding:  %s\n", output_string->left_padding);
@@ -32,8 +33,21 @@ size_t ft_output_string_print(t_output_string *output_string)
     }
     if (output_string->value)
     {
-        ft_putstr_fd(output_string->value, 1);
-        bytes_printed += ft_strlen(output_string->value);
+        if (output_string->value_override_bytes_to_print)
+        {
+            i = 0;
+            while (i < output_string->value_override_bytes_to_print)
+            {
+                ft_putchar_fd((output_string->value)[i], 1);
+                bytes_printed++;
+                i++;
+            }
+        }
+        else
+        {
+            ft_putstr_fd(output_string->value, 1);
+            bytes_printed += ft_strlen(output_string->value);
+        }
     }
     if (output_string->right_padding)
     {
