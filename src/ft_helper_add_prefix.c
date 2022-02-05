@@ -19,16 +19,18 @@ int ft_helper_add_prefix(t_element *element, t_output_string *os)
   }
   if (element->conversion_type == 'x')
   {
-    if (element->flags & alternate_form)
+    if (element->flags & alternate_form && os->value)
     {
-      os->prefix = ft_strdup("0x");
+      if (ft_strncmp(os->value, "0", 2) != 0)
+        os->prefix = ft_strdup("0x");
     }
   }
   if (element->conversion_type == 'X')
   {
-    if (element->flags & alternate_form)
+    if (element->flags & alternate_form && os->value)
     {
-      os->prefix = ft_strdup("0X");
+      if (ft_strncmp(os->value, "0", 2) != 0)
+        os->prefix = ft_strdup("0X");
     }
   }
   return (0);
