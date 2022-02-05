@@ -9,7 +9,7 @@ t_output_string *ft_convert_element_d_to_output_string(t_element *element)
 		return (NULL);
 	if (element->content_string[0] == '-')
 		os->value = ft_strdup((element->content_string) + 1);
-	else if (ft_strncmp(element->content_string, "0", 2) == 0)
+	else if (ft_strncmp(element->content_string, "0", 2) == 0 && element->flags & precision_is_set)
 		os->value = ft_strdup("");
 	else
 		os->value = ft_strdup(element->content_string);
