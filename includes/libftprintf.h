@@ -42,6 +42,7 @@ typedef struct s_output_string
 	char *prefix;
 	char *leading_zeros;
 	char *value;
+	size_t	value_override_bytes_to_print;
 	char *right_padding;
 } t_output_string;
 
@@ -58,7 +59,7 @@ char *ft_convert_i(int n);
 char *ft_convert_p(void *ptr);
 char *ft_convert_percent(void);
 char *ft_convert_s(char *str);
-char *ft_convert_u(int num);
+char *ft_convert_u(unsigned int num);
 char *ft_convert_x(int num);
 char *ft_convert_x_upper(int num);
 
