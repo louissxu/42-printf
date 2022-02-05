@@ -16,7 +16,8 @@ int ft_helper_add_padding(t_element *element, t_output_string *os)
     padding_str[padding_len] = '\0';
     if (element->flags & negative_field_width)
       os->right_padding = ft_memset(padding_str, ' ', padding_len);
-    else if (element->flags & zero_padding && !(element->flags & precision_is_set))
+    else if (element->flags & zero_padding && \
+    !((element->flags & precision_is_set) && ft_isinstr(element->conversion_type, "diuxX")))
       os->leading_zeros = ft_memset(padding_str, '0', padding_len);
     else
       os->left_padding = ft_memset(padding_str, ' ', padding_len);
