@@ -6,7 +6,7 @@ int ft_helper_add_precision(t_element *element, t_output_string *os)
   size_t  num_of_zeros;
   char    *zeros_str;
 
-  if (ft_isinstr(element->conversion_type, "diuxX"))
+  if (ft_isinstr(element->conversion_type, "diuxXp"))
   {
     val_len = ft_strlen(os->value);
     if (val_len < element->precision)
@@ -22,9 +22,9 @@ int ft_helper_add_precision(t_element *element, t_output_string *os)
   }
   else if (element->conversion_type == 's')
   {
-    if (ft_strlen(element->content_string) > element->precision)
+    if (ft_strlen(os->value) > element->precision && element->flags & precision_is_set)
     {
-      element->content_string[element->precision] = '\0';
+      os->value[element->precision] = '\0';
     }
   }
   return (0);
