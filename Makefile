@@ -6,6 +6,15 @@ CFLAGS  = -Wall -Wextra -Werror
 #    SOURCES    #
 #---------------#
 
+SRC_PRINTF = ft_printf.c
+
+SRC_PARSER = ft_parser.c
+
+SRC_ELEMENT = ft_element_create_empty.c \
+			  ft_element_print.c \
+			  ft_element_destroy.c \
+			  ft_element_print.c
+
 SRC_CONVERT = ft_convert_c.c \
 			  ft_convert_d.c \
 			  ft_convert_i.c \
@@ -17,42 +26,39 @@ SRC_CONVERT = ft_convert_c.c \
 			  ft_convert_x_upper.c
 
 SRC_HELPERS = ft_size_t_to_str_base.c \
-			  ft_size_t_to_str_hex.c
-
-SRC_PARSER = ft_parser.c \
-			 ft_element_create_empty.c
-
-SRC_PRINTER = ft_element_print.c \
-			  ft_element_destroy.c \
-			  ft_print_element_c.c \
-			  ft_print_element_d.c \
-			  ft_print_element_i.c \
-			  ft_print_element_p.c \
-			  ft_print_element_percent.c \
-			  ft_print_element_s.c \
-			  ft_print_element_u.c \
-			  ft_print_element_x.c \
-			  ft_print_element_x_upper.c
+			  ft_size_t_to_str_hex.c \
+			  ft_helper_add_precision.c \
+			  ft_helper_add_padding.c \
+			  ft_helper_add_prefix.c
 
 SRC_OUTPUT_STRING = ft_output_string_create_empty.c \
 					ft_output_string_destroy.c \
 					ft_output_string_len.c \
-					ft_output_string_print.c \
-					ft_convert_element_to_output_string.c \
-					ft_convert_element_x_to_output_string.c \
-					ft_convert_element_x_upper_to_output_string.c
+					ft_output_string_print.c
 
-SRC_PRINTF = ft_printf.c
+SRC_ELEMENT_TO_OUTPUT_STRING = ft_convert_element_to_output_string.c \
+							   ft_convert_element_c_to_output_string.c \
+							   ft_convert_element_d_to_output_string.c \
+							   ft_convert_element_i_to_output_string.c \
+							   ft_convert_element_p_to_output_string.c \
+							   ft_convert_element_percent_to_output_string.c \
+							   ft_convert_element_s_to_output_string.c \
+							   ft_convert_element_u_to_output_string.c \
+							   ft_convert_element_x_to_output_string.c \
+							   ft_convert_element_x_upper_to_output_string.c
+
+
 
 SRC_DIR = src
 
-SRCS_RAW = $(SRC_CONVERT) \
-		   $(SRC_HELPERS) \
+SRCS_RAW = $(SRC_PRINTF) \
 		   $(SRC_PARSER) \
-		   $(SRC_PRINTER) \
+		   $(SRC_ELEMENT) \
+		   $(SRC_CONVERT) \
+		   $(SRC_HELPERS) \
 		   $(SRC_OUTPUT_STRING) \
-		   $(SRC_PRINTF)
-
+		   $(SRC_ELEMENT_TO_OUTPUT_STRING)
+		   
 SRCS = $(addprefix $(SRC_DIR)/, $(SRCS_RAW))
 
 OBJ_DIR = obj

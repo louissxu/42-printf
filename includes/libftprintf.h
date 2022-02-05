@@ -17,21 +17,6 @@
 #include <stdarg.h>
 #include "../libft/libft.h"
 
-int ft_printf(const char *format, ...);
-
-char *ft_size_t_to_str_base(size_t num, char *radix);
-char *ft_size_t_to_str_hex(size_t num);
-
-char *ft_convert_c(char c);
-char *ft_convert_d(int n);
-char *ft_convert_i(int n);
-char *ft_convert_p(void *ptr);
-char *ft_convert_percent(void);
-char *ft_convert_s(char *str);
-char *ft_convert_u(int num);
-char *ft_convert_x(int num);
-char *ft_convert_x_upper(int num);
-
 typedef enum e_flags
 {
 	zero_padding = 1,
@@ -60,27 +45,44 @@ typedef struct s_output_string
 	char *right_padding;
 } t_output_string;
 
+int ft_printf(const char *format, ...);
+
 t_element *ft_parser(const char *format, size_t *i, va_list arg_list);
 t_element *ft_element_create_empty();
 void ft_element_destroy(t_element *element);
 size_t ft_element_print(t_element *element);
 
-size_t ft_print_element_c(t_element *element);
-size_t ft_print_element_d(t_element *element);
-size_t ft_print_element_i(t_element *element);
-size_t ft_print_element_p(t_element *element);
-size_t ft_print_element_percent(t_element *element);
-size_t ft_print_element_s(t_element *element);
-size_t ft_print_element_u(t_element *element);
-size_t ft_print_element_x(t_element *element);
-size_t ft_print_element_x_upper(t_element *element);
+char *ft_convert_c(char c);
+char *ft_convert_d(int n);
+char *ft_convert_i(int n);
+char *ft_convert_p(void *ptr);
+char *ft_convert_percent(void);
+char *ft_convert_s(char *str);
+char *ft_convert_u(int num);
+char *ft_convert_x(int num);
+char *ft_convert_x_upper(int num);
+
+char *ft_size_t_to_str_base(size_t num, char *radix);
+char *ft_size_t_to_str_hex(size_t num);
 
 t_output_string *ft_output_string_create_empty();
 void ft_output_string_destroy(t_output_string *os);
 size_t ft_output_string_len(t_output_string *os);
 size_t ft_output_string_print(t_output_string *os);
+
 t_output_string *ft_convert_element_to_output_string(t_element *element);
+t_output_string *ft_convert_element_c_to_output_string(t_element *element);
+t_output_string *ft_convert_element_d_to_output_string(t_element *element);
+t_output_string *ft_convert_element_i_to_output_string(t_element *element);
+t_output_string *ft_convert_element_p_to_output_string(t_element *element);
+t_output_string *ft_convert_element_percent_to_output_string(t_element *element);
+t_output_string *ft_convert_element_s_to_output_string(t_element *element);
+t_output_string *ft_convert_element_u_to_output_string(t_element *element);
 t_output_string *ft_convert_element_x_to_output_string(t_element *element);
 t_output_string *ft_convert_element_x_upper_to_output_string(t_element *element);
+
+int ft_helper_add_precision(t_element *element, t_output_string *os);
+int	ft_helper_add_padding(t_element *element, t_output_string *os);
+int	ft_helper_add_prefix(t_element *element, t_output_string *os);
 
 #endif

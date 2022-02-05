@@ -17,14 +17,8 @@ char	*ft_convert_s(char *str)
 	char	*result;
 
 	if (!str)
-	{
 		result = ft_strdup("(null)");
-		return (result);
-	}
-	result = ft_strdup(str);
-	if (!result)
-	{
-		return (NULL);
-	}
+	else
+		result = ft_strdup(str);
 	return (result);
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "../includes/libftprintf.h"
 
 char	*ft_convert_c(char c)
 {
