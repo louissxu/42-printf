@@ -8,7 +8,11 @@ CFLAGS  = -Wall -Wextra -Werror
 
 SRC_PRINTF = ft_printf.c
 
-SRC_PARSER = ft_parser.c
+SRC_PARSER = ft_parser.c \
+			 ft_parse_flag.c \
+			 ft_parse_minimum_field_width.c \
+			 ft_parse_precision.c \
+			 ft_parse_conversion_type.c
 
 SRC_ELEMENT = ft_element_create_empty.c \
 			  ft_element_print.c \

@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_element_percent_to_output_string.c      :+:      :+:    :+:   */
+/*   ft_parse_minimum_field_width.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lxu <lxu@student.42adel.org.au>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/06 17:59:45 by lxu               #+#    #+#             */
-/*   Updated: 2022/02/06 17:59:46 by lxu              ###   ########.fr       */
+/*   Created: 2022/02/07 00:29:51 by lxu               #+#    #+#             */
+/*   Updated: 2022/02/07 00:29:52 by lxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-t_output_string	*ft_convert_element_percent_to_output_string(t_element *element)
+int	ft_parse_minimum_field_width(const char *format, size_t *i, \
+t_element *element)
 {
-	t_output_string	*os;
-
-	os = ft_output_string_create_empty();
-	if (!os)
-		return (NULL);
-	os->value = ft_strdup(element->content_string);
-	ft_helper_add_padding(element, os);
-	return (os);
+	element->minimum_field_width = 0;
+	while (ft_isdigit(format[*i]))
+	{
+		element->minimum_field_width *= 10;
+		element->minimum_field_width += format[*i];
+		element->minimum_field_width -= '0';
+		(*i)++;
+	}
+	return (0);
 }
