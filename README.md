@@ -31,7 +31,7 @@ Handles the additional flags as described below. This is only a short descriptio
 | 0          | Zero Padding         | Pads with zeros rather than spaces.                                                                                      |
 | .          | Precision            | Minimum precision of a numeric value. Adds leading zeros to pad out to that amount of precision.                         |
 | #          | Alternate mode       | Renders in alternate mode (the only applicable one to the conversions handled is to prefix certain conversions with 0x). |
-| (space)    | Leading space        | For numeric conversions. If number is positive add leading ` ` (space char).                                             |
+| (space)    | Leading space        | For numeric conversions. If number is positive add leading space char.                                             |
 | +          | Leading sign         | For numeric conversions. If number is positive add leading `+` char.                                                     |
 
 
