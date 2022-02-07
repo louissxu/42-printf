@@ -6,7 +6,7 @@
 /*   By: lxu <lxu@student.42adel.org.au>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 18:00:36 by lxu               #+#    #+#             */
-/*   Updated: 2022/02/06 18:00:37 by lxu              ###   ########.fr       */
+/*   Updated: 2022/02/07 19:26:51 by lxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	ft_helper_add_precision(t_element *element, t_output_string *os)
 		if (val_len < element->precision)
 		{
 			num_zeros = element->precision - val_len;
-			os->leading_zeros = malloc(sizeof *(os->leading_zeros) * (num_zeros + 1));
+			os->leading_zeros = malloc(sizeof *(os->leading_zeros) * \
+					(num_zeros + 1));
 			if (!(os->leading_zeros))
 				return (1);
 			os->leading_zeros = ft_memset(os->leading_zeros, '0', num_zeros);
