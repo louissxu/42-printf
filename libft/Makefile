@@ -115,9 +115,14 @@ bonus:
 # 	ar rc $(NAME) $(OBJS) $(BONUS_OBJS)
 # 	ranlib $(NAME)
 
-extra: $(OBJS) $(BONUS_OBJS) $(EXTRA_OBJS)
-	ar rc $(NAME) $(OBJS) $(BONUS_OBJS) $(EXTRA_OBJS)
+extra:
+	$(CC) $(CFLAGS) -I . -c $(SRCS) $(BONUS_SRCS) $(EXTRA_SRC)
+	ar rc $(NAME) $(OBJS) $(BONUS_OBJS) $(EXTRA_OBJ)
 	ranlib $(NAME)
+
+# extra: $(OBJS) $(BONUS_OBJS) $(EXTRA_OBJS)
+# 	ar rc $(NAME) $(OBJS) $(BONUS_OBJS) $(EXTRA_OBJS)
+# 	ranlib $(NAME)
 
 
 clean:
