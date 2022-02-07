@@ -126,7 +126,7 @@ extra:
 
 
 clean:
-	-rm $(OBJS) $(BONUS_OBJS)
+	-rm $(OBJS) $(BONUS_OBJS) $(EXTRA_OBJS)
 
 fclean: clean
 	-rm $(NAME)
