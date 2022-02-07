@@ -29,10 +29,11 @@ Handles the additional flags as described below. This is only a short descriptio
 | 1234567890 | Minimum Field Width  | The minimum number of chars the field should occupy. Pad out to this size if it is smaller.                              |
 | -          | Negative Field Width | Pads on the right rather than the left (ie 'left aligns').                                                               |
 | 0          | Zero Padding         | Pads with zeros rather than spaces.                                                                                      |
-| .          | Precision            | Minimum precision of a numeric value. Ie adds leading zeros.                                                             |
+| .          | Precision            | Minimum precision of a numeric value. Adds leading zeros to pad out to that amount of precision.                         |
 | #          | Alternate mode       | Renders in alternate mode (the only applicable one to the conversions handled is to prefix certain conversions with 0x). |
-|  (space)   | Leading space        | For numeric conversions. If number is positive add leading space.                                                        |
+| (space)    | Leading space        | For numeric conversions. If number is positive add leading ` ` (space char).                                             |
 | +          | Leading sign         | For numeric conversions. If number is positive add leading `+` char.                                                     |
+
 
 ### Branch description
 
