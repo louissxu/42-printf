@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_u.c                                     :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: lxu <lxu@student.42adel.org.au>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 15:24:11 by lxu               #+#    #+#             */
-/*   Updated: 2022/01/18 16:18:21 by lxu              ###   ########.fr       */
+/*   Created: 2022/01/10 16:53:53 by lxu               #+#    #+#             */
+/*   Updated: 2022/01/10 20:21:38 by lxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_convert_u(unsigned int num)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	return (ft_size_t_to_str_base(num, "0123456789"));
+	t_list	*next;
+
+	if (!lst || !del)
+	{
+		return ;
+	}
+	while (*lst)
+	{
+		next = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = next;
+	}
 }

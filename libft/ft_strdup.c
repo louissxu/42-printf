@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_percent.c                               :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: lxu <lxu@student.42adel.org.au>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 15:23:46 by lxu               #+#    #+#             */
-/*   Updated: 2022/01/18 15:23:47 by lxu              ###   ########.fr       */
+/*   Created: 2022/01/10 16:54:38 by lxu               #+#    #+#             */
+/*   Updated: 2022/01/17 13:06:00 by lxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "libft.h"
 
-char	*ft_convert_percent(void)
+char	*ft_strdup(const char *s1)
 {
 	char	*result;
+	size_t	len;
+	size_t	i;
 
-	result = ft_strdup("%");
+	len = ft_strlen(s1);
+	result = malloc(sizeof (*result) * (len + 1));
+	if (!result)
+	{
+		return (result);
+	}
+	i = 0;
+	while (i < len)
+	{
+		result[i] = s1[i];
+		i++;
+	}
+	result[i] = '\0';
 	return (result);
 }

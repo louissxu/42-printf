@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_u.c                                     :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: lxu <lxu@student.42adel.org.au>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 15:24:11 by lxu               #+#    #+#             */
-/*   Updated: 2022/01/18 16:18:21 by lxu              ###   ########.fr       */
+/*   Created: 2022/01/10 16:54:59 by lxu               #+#    #+#             */
+/*   Updated: 2022/01/10 16:55:00 by lxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
-
-char	*ft_convert_u(unsigned int num)
+int	ft_tolower(int c)
 {
-	return (ft_size_t_to_str_base(num, "0123456789"));
+	if (c >= 'A' && c <= 'Z')
+	{
+		c = c - 'A' + 'a';
+	}
+	return (c);
 }

@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_c.c                                     :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: lxu <lxu@student.42adel.org.au>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 15:21:18 by lxu               #+#    #+#             */
-/*   Updated: 2022/01/18 15:21:25 by lxu              ###   ########.fr       */
+/*   Created: 2022/01/10 16:54:48 by lxu               #+#    #+#             */
+/*   Updated: 2022/01/11 01:32:03 by lxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "libft.h"
 
-char	*ft_convert_c(char c)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
+	size_t	len;
 	char	*result;
+	size_t	i;
 
-	result = malloc(sizeof (*result) * 2);
+	len = ft_strlen(s);
+	result = malloc(sizeof (*result) * (len + 1));
 	if (!result)
 	{
-		return (NULL);
+		return (result);
 	}
-	result[0] = c;
-	result[1] = '\0';
+	i = 0;
+	while (i < len)
+	{
+		result[i] = f(i, s[i]);
+		i++;
+	}
+	result[i] = '\0';
 	return (result);
 }

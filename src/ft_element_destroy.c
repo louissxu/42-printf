@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_u.c                                     :+:      :+:    :+:   */
+/*   ft_element_destroy.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: lxu <lxu@student.42adel.org.au>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 15:24:11 by lxu               #+#    #+#             */
-/*   Updated: 2022/01/18 16:18:21 by lxu              ###   ########.fr       */
+/*   Created: 2022/02/06 18:00:17 by lxu               #+#    #+#             */
+/*   Updated: 2022/02/06 18:00:18 by lxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-char	*ft_convert_u(unsigned int num)
+void	ft_element_destroy(t_element *element)
 {
-	return (ft_size_t_to_str_base(num, "0123456789"));
+	if (element->content_string != NULL)
+	{
+		free(element->content_string);
+		element->content_string = NULL;
+	}
+	free(element);
 }

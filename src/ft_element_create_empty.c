@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_c.c                                     :+:      :+:    :+:   */
+/*   ft_element_create_empty.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: lxu <lxu@student.42adel.org.au>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 15:21:18 by lxu               #+#    #+#             */
-/*   Updated: 2022/01/18 15:21:25 by lxu              ###   ########.fr       */
+/*   Created: 2022/02/06 18:00:14 by lxu               #+#    #+#             */
+/*   Updated: 2022/02/06 18:00:15 by lxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-char	*ft_convert_c(char c)
+t_element	*ft_element_create_empty(void)
 {
-	char	*result;
+	t_element	*element;
 
-	result = malloc(sizeof (*result) * 2);
-	if (!result)
+	element = malloc(sizeof(*element) * 1);
+	if (!element)
 	{
 		return (NULL);
 	}
-	result[0] = c;
-	result[1] = '\0';
-	return (result);
+	element->flags = 0;
+	element->conversion_type = '\0';
+	element->precision = 0;
+	element->minimum_field_width = 0;
+	element->content_string = NULL;
+	return (element);
 }

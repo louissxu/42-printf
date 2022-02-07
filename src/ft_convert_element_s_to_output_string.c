@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_c.c                                     :+:      :+:    :+:   */
+/*   ft_convert_element_s_to_output_string.c            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: lxu <lxu@student.42adel.org.au>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 15:21:18 by lxu               #+#    #+#             */
-/*   Updated: 2022/01/18 15:21:25 by lxu              ###   ########.fr       */
+/*   Created: 2022/02/06 17:59:47 by lxu               #+#    #+#             */
+/*   Updated: 2022/02/06 17:59:51 by lxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-char	*ft_convert_c(char c)
+t_output_string	*ft_convert_element_s_to_output_string(t_element *element)
 {
-	char	*result;
+	t_output_string	*os;
 
-	result = malloc(sizeof (*result) * 2);
-	if (!result)
-	{
+	os = ft_output_string_create_empty();
+	if (!os)
 		return (NULL);
-	}
-	result[0] = c;
-	result[1] = '\0';
-	return (result);
+	os->value = ft_strdup(element->content_string);
+	ft_helper_add_precision(element, os);
+	ft_helper_add_padding(element, os);
+	return (os);
 }

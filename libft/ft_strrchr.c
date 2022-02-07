@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_percent.c                               :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: lxu <lxu@student.42adel.org.au>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 15:23:46 by lxu               #+#    #+#             */
-/*   Updated: 2022/01/18 15:23:47 by lxu              ###   ########.fr       */
+/*   Created: 2022/01/10 16:54:55 by lxu               #+#    #+#             */
+/*   Updated: 2022/01/10 21:30:07 by lxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include <stdlib.h>
 
-char	*ft_convert_percent(void)
+char	*ft_strrchr(const char *s, int c)
 {
 	char	*result;
+	char	*ptr;
 
-	result = ft_strdup("%");
+	ptr = (char *)s;
+	c = (char)c;
+	result = NULL;
+	while (*ptr)
+	{
+		if (*ptr == c)
+		{
+			result = ptr;
+		}
+		ptr++;
+	}
+	if (*ptr == c)
+	{
+		result = ptr;
+	}
 	return (result);
 }

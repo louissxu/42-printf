@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_u.c                                     :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: lxu <lxu@student.42adel.org.au>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 15:24:11 by lxu               #+#    #+#             */
-/*   Updated: 2022/01/18 16:18:21 by lxu              ###   ########.fr       */
+/*   Created: 2022/01/10 16:49:00 by lxu               #+#    #+#             */
+/*   Updated: 2022/01/10 23:37:44 by lxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "libft.h"
 
-char	*ft_convert_u(unsigned int num)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	return (ft_size_t_to_str_base(num, "0123456789"));
+	t_list	*ptr;
+
+	if (!(*lst))
+	{
+		*lst = new;
+		return ;
+	}
+	ptr = *lst;
+	while (ptr->next)
+	{
+		ptr = ptr->next;
+	}
+	ptr->next = new;
 }

@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_u.c                                     :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: lxu <lxu@student.42adel.org.au>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 15:24:11 by lxu               #+#    #+#             */
-/*   Updated: 2022/01/18 16:18:21 by lxu              ###   ########.fr       */
+/*   Created: 2022/01/10 16:54:11 by lxu               #+#    #+#             */
+/*   Updated: 2022/01/10 21:18:55 by lxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "libft.h"
 
-char	*ft_convert_u(unsigned int num)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	return (ft_size_t_to_str_base(num, "0123456789"));
+	size_t			i;
+	unsigned char	*b_ptr;
+
+	b_ptr = b;
+	i = 0;
+	while (i < len)
+	{
+		b_ptr[i] = (unsigned char)c;
+		i++;
+	}
+	return (b);
 }

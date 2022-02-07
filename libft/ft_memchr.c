@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_c.c                                     :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: lxu <lxu@student.42adel.org.au>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 15:21:18 by lxu               #+#    #+#             */
-/*   Updated: 2022/01/18 15:21:25 by lxu              ###   ########.fr       */
+/*   Created: 2022/01/10 16:54:04 by lxu               #+#    #+#             */
+/*   Updated: 2022/01/10 20:44:05 by lxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include <stdlib.h>
 
-char	*ft_convert_c(char c)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	char	*result;
+	size_t			i;
+	unsigned char	*ptr;
 
-	result = malloc(sizeof (*result) * 2);
-	if (!result)
+	ptr = (unsigned char *)s;
+	c = (unsigned char)c;
+	i = 0;
+	while (i < n)
 	{
-		return (NULL);
+		if (ptr[i] == c)
+		{
+			return (ptr + i);
+		}
+		i++;
 	}
-	result[0] = c;
-	result[1] = '\0';
-	return (result);
+	return (NULL);
 }
