@@ -95,14 +95,14 @@ $(NAME): $(OBJS)
 
 clean:
 	$(MAKE) clean -C ./libft
-	-rm $(OBJS)
-	-rmdir obj
+	rm -f $(OBJS)
+	rm -rf obj
 
 fclean:
 	$(MAKE) fclean -C ./libft
-	-rm $(OBJS)
-	-rmdir obj
-	-rm $(NAME)
+	rm -f $(OBJS)
+	rm -rf obj
+	rm -f $(NAME)
 
 re: fclean all
 
