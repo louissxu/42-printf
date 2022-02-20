@@ -1,6 +1,14 @@
 # 42-printf
 
-A partial reimplementation of the printf in C. Handles only the following conversions.
+### Final Grade
+
+**125/100**
+
+A 42 Project. A partial reimplementation of printf in C from the standard library. Submitted and passed the Moulinette including all bonuses.
+
+### Overview
+
+A partial reimplementation of the printf in C. Handles the following conversions.
 
 | Conversion | Short Description                                                                             |
 |------------|-----------------------------------------------------------------------------------------------|
